@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+}
+
+model SeoSetting {
+  id       Int    @id @default(autoincrement())
+  title    String
+  siteName String
+}
+
+model Product {
+   id               Int              @id @default(autoincrement())
+  title            String
+  shortDescription String?
+  price            Float
+  discountedPrice  Float?
+    slug             String           @unique
+  quantity         Int?
+  updatedAt        DateTime         @updatedAt
+  image            String?
+  countdowns       Countdown[]
+  heroBanners      HeroBanner[]
+  heroSliders      HeroSlider[]
+  productVariants  ProductVariant[]
+  reviews          Review[]
+}
+
+model ProductVariant {
+  id        Int     @id @default(autoincrement())
+  image     String
+  color     String
+  size      String
+  isDefault Boolean
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Review {
+  id         Int     @id @default(autoincrement())
+  isApproved Boolean @default(false)
+  productId  Int
+  product    Product @relation(fields: [productId], references: [id])
+}
+
+model HeaderSetting {
+  id    Int    @id @default(autoincrement())
+  title String
+}
+
+model HeroBanner {
+  id        Int      @id @default(autoincrement())
+  title     String
+  updatedAt DateTime @updatedAt
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  title     String
+  slug      String   @default("")
+  img       String
+  updatedAt DateTime @updatedAt
+}
+
+model Countdown {
+  id        Int      @id @default(autoincrement())
+  title     String
+  updatedAt DateTime @updatedAt
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+}
+
+model HeroSlider {
+  id        Int      @id @default(autoincrement())
+  title     String
+  updatedAt DateTime @updatedAt
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+}
