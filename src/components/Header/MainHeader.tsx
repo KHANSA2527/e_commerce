@@ -75,7 +75,7 @@ const MainHeader = ({ headerData }: IProps) => {
             <div className="flex justify-between">
               <div className="hidden lg:block">
                 <p className="text-sm font-medium text-white">
-                  {headerData?.headerText ||
+                  {headerData?.title  ||
                     "Get free delivery on orders over $100"}
                 </p>
               </div>
@@ -104,13 +104,13 @@ const MainHeader = ({ headerData }: IProps) => {
             <div>
               <Link className="block py-2 shrink-0" href="/">
                 <div className="flex items-center gap-1">
-                  <Image
+                  {/* <Image
                     src={headerData?.headerLogo || "/images/logo/logo.svg"}
                     alt="Logo"
                     width={148}
                     height={36}
                     priority
-                  />
+                  /> */}
                   <span className="ml-2 px-3 py-1 rounded-tl-lg rounded-tr-lg rounded-br-lg bg-[#02AAA4] text-white text-sm font-medium">
                     Demo
                   </span>
@@ -178,12 +178,12 @@ const MainHeader = ({ headerData }: IProps) => {
 
       {/* Mobile Menu - Offcanvas */}
 
-      <MobileMenu
+      {/* <MobileMenu
         headerLogo={headerData?.headerLogo || null}
         isOpen={navigationOpen}
         onClose={() => setNavigationOpen(false)}
         menuData={menuData}
-      />
+      /> */}
     </>
   );
 };

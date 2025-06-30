@@ -17,7 +17,7 @@ const CountdownBanner = ({ data }: CountdownBannerProps) => {
         <div className="relative overflow-hidden z-1 rounded-xl bg-gray-2 p-4 sm:p-7.5 lg:p-10 xl:p-15">
           <div className="max-w-[422px] w-full">
             <span className="block font-medium lg text-blue mb-2.5">
-              {data.subtitle}
+              {data.title}
             </span>
 
             <h2 className="mb-3 text-xl font-semibold text-dark lg:text-heading-4 xl:text-heading-3">
@@ -53,13 +53,13 @@ const BackgroundImages = ({ data }: CountdownBannerProps) => (
       width={737}
       height={482}
     />
-    <Image
+    {/* <Image
       src={data.countdownImage}
       alt="product"
       className="absolute hidden lg:block right-4 xl:right-33 bottom-4 xl:bottom-14 -z-1"
       width={316}
       height={370}
-    />
+    /> */}
   </>
 );
 

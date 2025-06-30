@@ -1,15 +1,15 @@
 
 
 export type Product = {
-  id: string;
+  id: number | any;
   title: string;
   price: number;
-  discountedPrice?: number | null;
+  discountedPrice?: number | any;
   slug: string;
-  quantity: number;
+  quantity: number | any;
   updatedAt: Date;
   reviews: number;
-  shortDescription: string;
+  shortDescription: any;
   productVariants: {
     color: string;
     image: string;
@@ -20,7 +20,7 @@ export type Product = {
 
 
 export type IProductByDetails = {
-  id: string;
+  id: number;
   title: string;
   shortDescription: string;
   description: string | null;

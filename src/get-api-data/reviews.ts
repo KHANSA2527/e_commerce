@@ -5,14 +5,10 @@ export const getReviews = unstable_cache(
   async (productSlug: string) => {
     const reviews = await prisma.review.findMany({
       where: {
-        AND: [
-          {
-            productSlug: productSlug,
-          },
-          {
-            isApproved: true,
-          },
-        ],
+        product: {
+          slug: productSlug,  // Filter through the related product
+        },
+        isApproved: true,
       },
     });
     return {

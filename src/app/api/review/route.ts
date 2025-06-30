@@ -11,23 +11,25 @@ export async function POST(req: NextRequest) {
       where: {
         AND: [
           {
-            productSlug: productSlug,
+            product: {
+              slug: productSlug, // Correct relation-based filter
+            },
           },
           {
             isApproved: true,
           },
-        ]
+        ],
       },
     });
 
-    if (!reviews) {
+    if (!reviews || reviews.length === 0) {
       return NextResponse.json(
         { message: "No reviews found" },
         { status: 200 }
       );
     }
 
-    return NextResponse.json({ review: reviews }, { status: 200 });
+    return NextResponse.json({ reviews }, { status: 200 });
   } catch (err) {
     console.error(err);
 
@@ -36,5 +38,4 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     );
   }
-};
-
+}

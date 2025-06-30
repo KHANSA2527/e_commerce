@@ -20,12 +20,12 @@ model SeoSetting {
 }
 
 model Product {
-   id               Int              @id @default(autoincrement())
+  id               Int              @id @default(autoincrement())
   title            String
   shortDescription String?
   price            Float
   discountedPrice  Float?
-    slug             String           @unique
+  slug             String           @unique
   quantity         Int?
   updatedAt        DateTime         @updatedAt
   image            String?
@@ -50,12 +50,15 @@ model Review {
   id         Int     @id @default(autoincrement())
   isApproved Boolean @default(false)
   productId  Int
+  ratings    Int     @default(0)
   product    Product @relation(fields: [productId], references: [id])
 }
 
 model HeaderSetting {
-  id    Int    @id @default(autoincrement())
-  title String
+  id         Int     @id @default(autoincrement())
+  title      String
+  emailLogo  String?
+  headerLogo String?
 }
 
 model HeroBanner {
@@ -68,10 +71,10 @@ model HeroBanner {
 
 model Category {
   id        Int      @id @default(autoincrement())
-  title     String
-  slug      String   @default("")
-  img       String
   updatedAt DateTime @updatedAt
+  img       String
+  title     String
+  slug      String   @unique
 }
 
 model Countdown {

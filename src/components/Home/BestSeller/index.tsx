@@ -14,7 +14,7 @@ const BestSeller = async () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7.5">
           {bestSellProducts.length > 0 &&
             bestSellProducts.map((item, key) => (
-              <SingleItem item={item} key={key} />
+  <SingleItem item={{ ...item, id: item.id.toString() }} key={key} />
             ))}
         </div>
 

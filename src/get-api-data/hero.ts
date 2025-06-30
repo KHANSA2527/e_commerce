@@ -23,8 +23,8 @@ export const getHeroBanners = unstable_cache(
       ...item,
       product: {
         ...item.product,
-        price: item.product.price.toNumber(),
-        discountedPrice: item.product.discountedPrice ? item.product.discountedPrice.toNumber() : null
+        price: item.product.price,
+        discountedPrice: item.product.discountedPrice ? item.product.discountedPrice : null
       }
     }));
   },
@@ -53,8 +53,8 @@ export const getHeroSliders = unstable_cache(
       ...item,
       product: {
         ...item.product,
-        price: item.product.price.toNumber(),
-        discountedPrice: item.product.discountedPrice ? item.product.discountedPrice.toNumber() : null
+        price: item.product.price,
+        discountedPrice: item.product.discountedPrice ? item.product.discountedPrice : null
       }
     }))
   },
